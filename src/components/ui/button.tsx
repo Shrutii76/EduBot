@@ -19,6 +19,8 @@ const buttonVariants = cva(
         "campus-outline": "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300",
         widget: "bg-gradient-primary text-white hover:shadow-widget hover:scale-110 transition-all duration-300 rounded-full",
         cta: "bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-card hover:scale-105 transition-all duration-300 font-semibold",
+        gradient: "bg-gradient-primary text-white hover:shadow-chatbot transform hover:scale-105 shadow-soft",
+        "gradient-outline": "border-2 border-primary bg-transparent text-primary hover:bg-gradient-primary hover:text-white hover:border-transparent shadow-soft",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -7,6 +7,16 @@ import { LoginDialog } from "@/components/LoginDialog";
 import { ChatWidget } from "@/components/ChatWidget";
 import { MessageCircle, Shield, Globe, Zap, Users, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ChatInterface } from "@/components/ChatInterface";
+import { 
+  HeadphonesIcon,
+  ShoppingCart,
+  Calendar,
+  Menu,
+  X,
+  Star,
+  Play
+} from "lucide-react";
 
 interface User {
   name: string;
@@ -90,50 +100,62 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <h1 className="text-5xl font-bold bg-gradient-campus bg-clip-text text-transparent">
-              Campus Help Assistant
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Your intelligent campus companion. Get instant answers about courses, events, 
-              facilities, and everything you need to know about campus life.
-            </p>
-          </div>
-
-          {user ? (
+        {/* Hero Section */}
+      <section className="container px-4 pt-6 pb-16 lg:pt-8 lg:pb-24 bg-white/80 backdrop-blur-sm">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
             <div className="space-y-4">
-              <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/30 shadow-card">
-                <h2 className="text-2xl font-semibold mb-2">Welcome back, {user.name}!</h2>
-                <p className="text-muted-foreground mb-4">
-                  Ready to continue where you left off? Click the chat widget below or open the full chat experience.
-                </p>
-                <Button onClick={handleOpenChat} variant="campus" size="lg" className="mr-4">
-                  Open Chat Assistant
-                </Button>
+              <p className="gradient-primary font-medium">Your Campus AI Assistant</p>
+              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                <span className="text-foreground">Smart Campus Support:</span>
+                <br />
+                <span className="bg-gradient-primary text-blue-900 bg-clip-text text-transparent">
+                  Your Academic AI Companion
+                </span>
+              </h1>
+              <p className=" text-lg text-muted-foreground max-w-lg">
+                Get instant answers about your college schedule, courses, and campus life in your preferred language. 
+                From class timings to registration deadlines, our AI assistant helps international and local students 
+                navigate academic life effortlessly - available 24/7 in 50+ languages.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button variant="gradient" size="lg" onClick={() => setShowLogin(true)}>
+                Check My Schedule
+              </Button>
                 <Button onClick={() => setShowWidget(!showWidget)} variant="campus-outline" size="lg">
                   {showWidget ? "Hide" : "Show"} Chat Widget
                 </Button>
-              </div>
             </div>
-          ) : (
-            <div className="space-y-6">
-              <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 border border-white/30 shadow-card">
-                <h2 className="text-2xl font-semibold mb-4">Get Started Today</h2>
-                <p className="text-muted-foreground mb-6">
-                  Login with your student credentials to access personalized assistance, 
-                  or continue as a guest for general campus information.
-                </p>
-                <Button onClick={() => setShowLogin(true)} variant="campus" size="lg">
-                  Start Chatting
-                </Button>
+            {/* Stats */}
+            {/* <div className="flex gap-8 pt-8">
+              <div>
+                <div className="text-2xl font-bold text-foreground">50+</div>
+                <div className="text-sm text-muted-foreground">Languages</div>
               </div>
-            </div>
-          )}
+              <div>
+                <div className="text-2xl font-bold text-foreground">10,000+</div>
+                <div className="text-sm text-muted-foreground">Students Helped</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-foreground">24/7</div>
+                <div className="text-sm text-muted-foreground">Available</div>
+              </div>
+            </div> */}
+          </div>
+
+          
+
+          {/* Chat Interface Mockup */}
+          <div className="relative">
+            <ChatInterface className="transform rotate-2 hover:rotate-0 transition-transform duration-500" />
+            <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-primary rounded-full opacity-20 blur-xl"></div>
+            <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary/10 rounded-full opacity-30 blur-2xl"></div>
+          </div>
         </div>
       </section>
+         
 
       {/* Features Grid */}
       <section className="container mx-auto px-4 py-16">
@@ -161,27 +183,30 @@ export default function LandingPage() {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16">
-        <div className="max-w-2xl mx-auto text-center">
-          <Card className="bg-gradient-campus text-white shadow-chatbot">
-            <CardHeader>
-              <CardTitle className="text-2xl">Ready to Get Started?</CardTitle>
-              <CardDescription className="text-white/90">
-                Join thousands of students already using Campus Assistant
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+        <Card className="bg-gradient-primary text-white shadow-chatbot border-0">
+          <CardContent className="p-12 text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Ready to Simplify Your College Life?
+            </h2>
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              Join thousands of students already using our campus AI assistant to stay organized, 
+              informed, and never miss important academic deadlines again.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                onClick={() => setShowLogin(true)} 
-                variant="secondary" 
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90"
+              
+                onClick={() => setShowLogin(true)}
               >
-                Get Started Now
+                Start Chatting Now
               </Button>
-            </CardContent>
-          </Card>
-        </div>
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+                See Demo
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </section>
+
 
       {/* Login Dialog */}
       <LoginDialog
